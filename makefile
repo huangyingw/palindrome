@@ -1,3 +1,3 @@
-OBJECTS = sum_cube.exe
+OBJECTS = palindrome.exe
 include ../../GNU_makefile_template
-LOCFLAGS = -I../sum_cube
+LOCFLAGS = -I../palindrome

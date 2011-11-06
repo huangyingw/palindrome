@@ -1,2 +1,2 @@
 make -B \
-&& ./sum_cube.exe
+&& ./palindrome.exe
