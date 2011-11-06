@@ -4,30 +4,22 @@
 
 using namespace std;
 
-int f(int len)
+int palindrome_num(int num)
 {
-  int sum=0;
-  int temp=0;
-  int cal=0;
-  for (int i=1;i<=len;i++)
+  int new_num=0;
+  int temp=num;
+  while ( temp )
   {
-    sum=0;
-    cal=i;
-    while (cal>10)
-    {
-      temp=cal%10;
-      sum+=temp*temp*temp;
-      cal=cal/10;
-    }
-    sum+=cal*cal*cal;
-    if (sum == i)
-      cout<<sum<<endl;
+    new_num=new_num*10+temp%10;
+    temp/=10;
   }
-  return 1;
+  return new_num == num;
 }
 
 int main() 
 {
-  f(20000);
+  cout<<palindrome_num(12321)<<endl;
+  cout<<palindrome_num(22321)<<endl;
+  cout<<palindrome_num(123454321)<<endl;
   return 0;
 }
