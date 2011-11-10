@@ -47,6 +47,14 @@ int main()
 
   cout<<palindrome_str_loop("1234321",7)<<endl;
   cout<<palindrome_str_loop("1334321",7)<<endl;
+  /*
+     1
+     0
+     1
+     1
+     1
+     0
+     */
 
   return 0;
 }
