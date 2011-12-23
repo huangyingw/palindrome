@@ -12,13 +12,17 @@ public class palindrome {
 			return 0;
 	}
 
-	static int palindrome_str(String string, int index, int len) {
-		if (1 == len)
-			return 1;
-		else if (string.charAt(len - 1) != string.charAt(0))
+	static int palindrome_str(String string, int begin, int end) {
+		if (begin < end && begin < string.length() && end < string.length()) {
+			else if (string.charAt(end) != string.charAt(begin))
+				return 0;
+			else
+				return palindrome_str(string, begin + 1, end - 1);
+		else {
 			return 0;
-		else
-			return palindrome_str(string, index + 1, len - 2);
+		}
+			
+		
 	}
 
 	static int palindrome_str_loop(String string, int len) {
