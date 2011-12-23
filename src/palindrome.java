@@ -14,15 +14,12 @@ public class palindrome {
 
 	static int palindrome_str(String string, int begin, int end) {
 		if (begin < end && begin < string.length() && end < string.length()) {
-			else if (string.charAt(end) != string.charAt(begin))
+			if (string.charAt(end) != string.charAt(begin))
 				return 0;
 			else
 				return palindrome_str(string, begin + 1, end - 1);
-		else {
-			return 0;
-		}
-			
-		
+		} else
+			return 1;
 	}
 
 	static int palindrome_str_loop(String string, int len) {
@@ -38,10 +35,12 @@ public class palindrome {
 	public static void main(String args[]) {
 		System.out.println(palindrome_num(12321));
 		System.out.println(palindrome_num(22321));
+		
 		System.out.println(palindrome_num(123454321));
-		System.out.println(palindrome_str("1234321", 0, 7));
-
+		System.out.println(palindrome_str("1234321", 0, 6));
+		System.out.println(palindrome_str("12344321", 0, 7));
 		System.out.println(palindrome_str_loop("1234321", 7));
+
 		System.out.println(palindrome_str_loop("1334321", 7));
 		/*
 		 * 1 0 1 1 1 0
