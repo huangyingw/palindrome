@@ -43,7 +43,7 @@ public class palindrome {
 
 		System.out.println(palindrome_str_loop("1334321", 7));
 		/*
-		 * 1 0 1 1 1 0
+		 * 1 0 1 1 1 1 0
 		 */
 
 	}
