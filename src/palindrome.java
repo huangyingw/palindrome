@@ -1,4 +1,20 @@
 public class palindrome {
+	public static void main(String args[]) {
+		System.out.println(palindrome_num(12321));
+		System.out.println(palindrome_num(22321));
+
+		System.out.println(palindrome_num(123454321));
+		System.out.println(palindrome_str("1234321".toCharArray(), 0, 6));
+		System.out.println(palindrome_str("12344321".toCharArray(), 0, 7));
+		System.out.println(palindrome_str_loop("1234321".toCharArray(), 7));
+
+		System.out.println(palindrome_str_loop("1334321".toCharArray(), 7));
+		/*
+		 * 1 0 1 1 1 1 0
+		 */
+
+	}
+
 	static int palindrome_num(int num) {
 		int new_num = 0;
 		int temp = num;
@@ -12,36 +28,23 @@ public class palindrome {
 			return 0;
 	}
 
-	static int palindrome_str(String string, int index, int len) {
-		if (1 == len)
+	static int palindrome_str(char[] string, int begin, int end) {
+		if (begin < end && begin < string.length && end < string.length) {
+			if (string[end] != string[begin])
+				return 0;
+			else
+				return palindrome_str(string, begin + 1, end - 1);
+		} else
 			return 1;
-		else if (string.charAt(len - 1) != string.charAt(0))
-			return 0;
-		else
-			return palindrome_str(string, index + 1, len - 2);
 	}
 
-	static int palindrome_str_loop(String string, int len) {
+	static int palindrome_str_loop(char[] string, int len) {
 		int j = 0;
-		for (int i = 0; i < len; i++) {
+		for (int i = 0; i <= len / 2; i++) {
 			j = len - 1 - i;
-			if (string.charAt(i) != string.charAt(j))
+			if (string[i] != string[j])
 				return 0;
 		}
 		return 1;
-	}
-
-	public static void main(String args[]) {
-		System.out.println(palindrome_num(12321));
-		System.out.println(palindrome_num(22321));
-		System.out.println(palindrome_num(123454321));
-		System.out.println(palindrome_str("1234321", 0, 7));
-
-		System.out.println(palindrome_str_loop("1234321", 7));
-		System.out.println(palindrome_str_loop("1334321", 7));
-		/*
-		 * 1 0 1 1 1 0
-		 */
-
 	}
 }
