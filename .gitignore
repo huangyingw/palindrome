@@ -1,6 +1,7 @@
 *.bak
 *.ncb
 *.suo
+*.un~
 Debug/
 bin/quicksort.class
 junit
@@ -11,4 +12,3 @@ quicksort/output.txt
 quicksort/quicksort.vcproj.HUANGYIN-567485.huangyingw.user
 result.cc
 run
-*.un~
