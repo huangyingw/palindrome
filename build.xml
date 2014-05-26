@@ -6,11 +6,18 @@
               as the first entry and export the buildfile again. --><project basedir="." default="run" name="palindrome">
     <property environment="env"/>
     <property name="ECLIPSE_HOME" value="../../../../../../../opt/eclipse"/>
+    <property name="junit.output.dir" value="junit"/>
     <property name="debuglevel" value="source,lines,vars"/>
     <property name="target" value="1.6"/>
     <property name="source" value="1.6"/>
+    <path id="JUnit 4.libraryclasspath">
+        <pathelement location="${ECLIPSE_HOME}/plugins/org.junit_4.11.0.v201303080030/junit.jar"/>
+        <pathelement location="${ECLIPSE_HOME}/plugins/org.hamcrest.core_1.3.0.v201303031735.jar"/>
+    </path>
     <path id="palindrome.classpath">
         <pathelement location="bin"/>
+        <path refid="JUnit 4.libraryclasspath"/>
+        <pathelement location="../../library/log4j/apache-log4j-1.2.17/log4j-1.2.17.jar"/>
     </path>
     <target name="init">
         <mkdir dir="bin"/>
@@ -48,9 +55,26 @@
         <property name="build.compiler" value="org.eclipse.jdt.core.JDTCompilerAdapter"/>
         <antcall target="build"/>
     </target>
-    <target name="palindrome">
-        <java classname="palindrome" failonerror="true" fork="yes">
+    <target name="Palindrome">
+        <java classname="Palindrome" failonerror="true" fork="yes">
             <classpath refid="palindrome.classpath"/>
         </java>
     </target>
+    <target depends="build" name="PalindromeTest">
+        <mkdir dir="${junit.output.dir}"/>
+        <junit haltonerror="yes" haltonfailure="yes" fork="yes" printsummary="withOutAndErr">
+            <formatter type="xml"/>
+            <test name="PalindromeTest" todir="${junit.output.dir}"/>
+            <classpath refid="palindrome.classpath"/>
+        </junit>
+    </target>
+    <target name="junitreport">
+        <junitreport todir="${junit.output.dir}">
+            <fileset dir="${junit.output.dir}">
+                <include name="TEST-*.xml"/>
+            </fileset>
+            <report format="frames" todir="${junit.output.dir}"/>
+        </junitreport>
+    </target>
+    <target depends="PalindromeTest" name="run"/>
 </project>
